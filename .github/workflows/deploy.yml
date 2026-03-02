@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  PROJECT_ID: cloud-portfolio
+  PROJECT_ID: cloud-portfolio-489014
   GKE_CLUSTER: flask-app-cluster
   GKE_ZONE: us-central1-a
   IMAGE: flask-app
@@ -43,7 +43,7 @@ jobs:
 
       - name: Get GKE credentials
         run: |
-          gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
+          gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $PROJECT_ID
 
       - name: Deploy to GKE
         if: github.ref == 'refs/heads/main'

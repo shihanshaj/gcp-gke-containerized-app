@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-service
+  namespace: default
+spec:
+  type: LoadBalancer # GCP creates a real load balancer automatically
+  selector:
+    app: flask-app # Routes traffic to pods with this label
+  ports:
+    - protocol: TCP
+      port: 80 # External port (what users hit)
+      targetPort: 8080 # Internal port (what our app listens on)
